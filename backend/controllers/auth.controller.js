@@ -1,4 +1,18 @@
-import User from "../model/user.model.js"
+import User from "../model/user.model.js";
+import jwt from "jsonwebtoken";
+
+const generateTokens = (userId) => {
+    const accessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "15m",
+    });
+
+    const refreshToken = jwt.sign({ userId }, process.env.REFRESH_TOKEN_SECRET, {
+        expiresIn: "7d",
+    });
+
+    return { accessToken, refreshToken};
+};
+
 
 export const signup = async (req, res) => {
     const { email, password, name } = req.body
@@ -10,9 +24,9 @@ export const signup = async (req, res) => {
         }
         const user = await User.create({ name, email, password });
 
-        // authenticate user
-        
-    
+        // authenticate
+        const {accessToken, refreshToken} = generateTokens(user._id)
+
 
         res.status(201).json({ user, message: "User created successfully" });
     } catch (error) {
