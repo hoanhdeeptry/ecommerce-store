@@ -1,8 +1,11 @@
+// eslint-disable-next-line no-unused-vars
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import Navbar from "./components/Navbar.jsx";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -20,6 +23,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
         </Routes>
       </div>
+      <Toaster/>
     </div>
   );
 }
