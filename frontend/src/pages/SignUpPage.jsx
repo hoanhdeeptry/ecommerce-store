@@ -17,7 +17,7 @@ const SignUpPage = () => {
   const {signup} = useUserStore();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    console.log("called here");
     signup(formData);
   }
   return (
