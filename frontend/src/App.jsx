@@ -6,6 +6,7 @@ import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import Navbar from "./components/Navbar.jsx";
 import { Toaster } from "react-hot-toast";
+import CategoryPage from "./pages/CategoryPage.jsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/category/:category" element={<CategoryPage />} />
         </Routes>
       </div>
       <Toaster/>
