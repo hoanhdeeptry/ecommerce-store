@@ -25,7 +25,7 @@ function App() {
           <Route path="/category/:category" element={<CategoryPage />} />
         </Routes>
       </div>
-      <Toaster/>
+      <Toaster />
     </div>
   );
 }
