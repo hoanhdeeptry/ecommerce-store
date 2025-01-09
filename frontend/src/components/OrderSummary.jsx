@@ -5,9 +5,10 @@ import { MoveRight } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "../lib/axios";
 
-const STRIPE_SECRET_KEY = import.meta.env.STRIPE_SECRET_KEY;
+const STRIPE_PUBLISHABLE_KEY = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
 
-const stripePromise = loadStripe({STRIPE_SECRET_KEY});
+const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY);
+
 
 const OrderSummary = () => {
 	const { total, subtotal, coupon, isCouponApplied, cart } = useCartStore();
@@ -25,6 +26,7 @@ const OrderSummary = () => {
 		});
 
 		const session = res.data;
+		console.log("here",session);
 		const result = await stripe.redirectToCheckout({
 			sessionId: session.id,
 		});
